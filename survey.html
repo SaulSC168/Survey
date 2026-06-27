@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>網絡培訓工作坊 · 意見問卷</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@500;700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+  <main class="survey-shell">
+    <header class="survey-head">
+      <p class="eyebrow">Cyber Training · Feedback</p>
+      <h1>課後意見問卷</h1>
+      <p class="intro-copy">
+        多謝你參與是次網絡培訓工作坊！請花約 2 分鐘填寫以下問卷。<br>
+        你嘅寶貴意見將會作為日後舉辦課程嘅重要參考。
+      </p>
+    </header>
+
+    <form id="surveyForm" class="survey-card" novalidate>
+      <!-- Q1 -->
+      <section class="block">
+        <p class="block-title">一 · 背景資料</p>
+
+        <fieldset class="field-group">
+          <legend>1. 你的專業背景是？ <span aria-hidden="true">*</span></legend>
+          <div class="radio-row">
+            <label class="radio-card"><input type="radio" name="background" value="IT / 網絡安全從業員" required><span>IT / 網絡安全從業員</span></label>
+            <label class="radio-card"><input type="radio" name="background" value="管理人員 / 主管"><span>管理人員 / 主管</span></label>
+            <label class="radio-card"><input type="radio" name="background" value="前線員工 / 一般文職"><span>前線員工 / 一般文職</span></label>
+            <label class="radio-card"><input type="radio" name="background" value="學生"><span>學生</span></label>
+          </div>
+          <div class="other-row">
+            <label class="radio-card"><input type="radio" name="background" value="其他" id="bgOtherRadio"><span>其他，請說明：</span></label>
+            <input id="bgOtherInput" name="bgOther" type="text" class="other-input" placeholder="請輸入你的專業背景" autocomplete="off" disabled>
+          </div>
+          <p class="field-error" data-error-for="background"></p>
+        </fieldset>
+      </section>
+
+      <!-- Q2 & Q3 -->
+      <section class="block">
+        <p class="block-title">二 · 內容評估</p>
+
+        <fieldset class="field-group">
+          <legend>2. 是次網絡培訓工作坊內容對你了解網絡安全有多大幫助？ <span aria-hidden="true">*</span></legend>
+          <div class="scale-row" data-scale>
+            <label class="scale-card"><input type="radio" name="helpfulness" value="5" required><span>5 - 十分幫助</span></label>
+            <label class="scale-card"><input type="radio" name="helpfulness" value="4"><span>4 - 有幫助</span></label>
+            <label class="scale-card"><input type="radio" name="helpfulness" value="3"><span>3 - 一般</span></label>
+            <label class="scale-card"><input type="radio" name="helpfulness" value="2"><span>2 - 幫助不大</span></label>
+            <label class="scale-card"><input type="radio" name="helpfulness" value="1"><span>1 - 沒有幫助</span></label>
+          </div>
+          <p class="field-error" data-error-for="helpfulness"></p>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>3. 你對培訓工作坊上嘅內容理解程度？ <span aria-hidden="true">*</span></legend>
+          <div class="scale-row" data-scale>
+            <label class="scale-card"><input type="radio" name="difficulty" value="5" required><span>5 - 最困難</span></label>
+            <label class="scale-card"><input type="radio" name="difficulty" value="4"><span>4 - 偏難</span></label>
+            <label class="scale-card"><input type="radio" name="difficulty" value="3"><span>3 - 適中</span></label>
+            <label class="scale-card"><input type="radio" name="difficulty" value="2"><span>2 - 偏易</span></label>
+            <label class="scale-card"><input type="radio" name="difficulty" value="1"><span>1 - 最容易</span></label>
+          </div>
+          <p class="field-error" data-error-for="difficulty"></p>
+        </fieldset>
+      </section>
+
+      <!-- Q4 -->
+      <section class="block">
+        <p class="block-title">三 · 將來課程方向</p>
+
+        <fieldset class="field-group">
+          <legend>4. 若將來再次舉行培訓工作坊，哪個主題你最感興趣？ <span aria-hidden="true">*</span></legend>
+          <div class="radio-row">
+            <label class="radio-card"><input type="radio" name="interest" value="網絡釣魚與社交工程防範" required><span>網絡釣魚與社交工程防範</span></label>
+            <label class="radio-card"><input type="radio" name="interest" value="密碼安全與多因素驗證"><span>密碼安全與多因素驗證</span></label>
+            <label class="radio-card"><input type="radio" name="interest" value="數據保護與私隱合規"><span>數據保護與私隱合規</span></label>
+            <label class="radio-card"><input type="radio" name="interest" value="勒索軟件防護與應變"><span>勒索軟件防護與應變</span></label>
+            <label class="radio-card"><input type="radio" name="interest" value="雲端安全"><span>雲端安全</span></label>
+            <label class="radio-card"><input type="radio" name="interest" value="AI 與網絡安全"><span>AI 與網絡安全</span></label>
+          </div>
+          <div class="other-row">
+            <label class="radio-card"><input type="radio" name="interest" value="其他" id="intOtherRadio"><span>其他，請說明：</span></label>
+            <input id="intOtherInput" name="intOther" type="text" class="other-input" placeholder="請輸入感興趣的主題" autocomplete="off" disabled>
+          </div>
+          <p class="field-error" data-error-for="interest"></p>
+        </fieldset>
+      </section>
+
+      <!-- Q5 -->
+      <section class="block">
+        <p class="block-title">四 · 其他意見</p>
+
+        <div class="field-group">
+          <label for="comments">5. 你對培訓工作坊有什麼寶貴建議？</label>
+          <textarea id="comments" name="comments" rows="5" placeholder="歡迎分享你的想法，讓我們做得更好……"></textarea>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button class="submit-button" type="submit">
+          <span class="button-text">提交問卷</span>
+          <span class="button-loader" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <div id="thankYou" class="thank-you" role="alert" hidden>
+      <p class="thank-you__label">Thank You</p>
+      <h2>多謝你嘅寶貴意見！</h2>
+      <p>我哋會參考你的回應，籌備更切合需要嘅培訓內容。</p>
+    </div>
+  </main>
+
+  <script src="survey.js"></script>
+</body>
+</html>
