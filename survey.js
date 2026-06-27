@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjRu9hwPrsuv60Sk1Dejh5YK_qM8So1x2cKFN1gl_1uAmLqwH2SnAIA_nyk1gL3NjZ/exec";
 
 const form = document.querySelector("#surveyForm");
 const submitButton = form.querySelector(".submit-button");
