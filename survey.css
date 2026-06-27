@@ -454,3 +454,71 @@ h1 {
     white-space: normal;
   }
 }
+
+/* ─────────────────────────────────────
+   Mobile performance optimisations
+   Disable GPU-expensive effects on small
+   screens where they cause jank / slow paint
+   ───────────────────────────────────── */
+@media (max-width: 768px) {
+  /* backdrop-filter: blur() is the #1 mobile
+     performance killer — replace with solid bg */
+  .survey-card,
+  .thank-you {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(5, 11, 30, 0.97);
+  }
+
+  /* Simplify body to a single linear-gradient
+     (3 radial-gradients = 3 extra GPU layers) */
+  body {
+    background: linear-gradient(160deg, #020511, var(--bg) 55%, #0a1538);
+  }
+
+  /* Remove full-viewport grid overlay
+     (mask-image is very expensive on mobile) */
+  body::before {
+    display: none;
+  }
+
+  /* Reduce text-shadow blur radius */
+  h1 {
+    text-shadow: 0 0 10px rgba(53, 215, 255, 0.18);
+  }
+
+  /* Lighter box-shadows (smaller blur = less paint) */
+  .survey-card,
+  .thank-you {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .scale-card input:checked + span,
+  .radio-card input:checked + span {
+    box-shadow: 0 0 10px rgba(53, 215, 255, 0.12);
+  }
+
+  .submit-button {
+    box-shadow: 0 0 16px rgba(8, 119, 255, 0.16);
+  }
+
+  .submit-button:not(:disabled):hover {
+    box-shadow: 0 0 20px rgba(8, 119, 255, 0.22);
+  }
+
+  /* Drop box-shadow from transitions (GPU-cheap) */
+  .scale-card span,
+  .radio-card span {
+    transition: background 0.12s, border-color 0.12s;
+  }
+}
+
+/* Respect users' reduced-motion OS setting */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
