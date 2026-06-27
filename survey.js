@@ -111,7 +111,7 @@ async function submitSurvey(data) {
 
   const response = await fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
-    mode: "cors",
+    mode: "no-cors",
     headers: {
       "Content-Type": "text/plain;charset=utf-8",
     },
@@ -124,7 +124,7 @@ async function submitSurvey(data) {
     throw new Error(result.error || "Submission failed.");
   }
 
-  return result;
+  return { ok: true };
 }
 
 form.addEventListener("submit", async (event) => {
