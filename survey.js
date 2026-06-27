@@ -4,6 +4,8 @@ const form = document.querySelector("#surveyForm");
 const submitButton = form.querySelector(".submit-button");
 const formStatus = document.querySelector("#formStatus");
 const thankYou = document.querySelector("#thankYou");
+const surveyTitle = document.querySelector("#surveyTitle");
+const introCopy = document.querySelector("#introCopy");
 
 // "Other" radio → enable text input
 const bgOtherRadio = document.getElementById("bgOtherRadio");
@@ -143,6 +145,8 @@ form.addEventListener("submit", async (event) => {
     setLoading(true);
     await submitSurvey(data);
     form.hidden = true;
+    surveyTitle.hidden = true;
+    introCopy.innerHTML = "多謝你參與是次網絡培訓工作坊！<br>你嘅寶貴意見將會作為日後舉辦課程嘅重要參考。";
     thankYou.hidden = false;
     thankYou.scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (error) {
