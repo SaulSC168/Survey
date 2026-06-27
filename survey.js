@@ -143,12 +143,28 @@ form.addEventListener("submit", async (event) => {
 
   try {
     setLoading(true);
-    await submitSurvey(data);
+
+    /*
+     * Optimistic UI update.
+     * With mode:"no-cors" we can NEVER read the server response (it's
+     * opaque), so there is no point waiting for fetch to resolve before
+     * switching to the thank-you screen.  Moving the UI change BEFORE
+     * the fetch guarantees the user always sees the result, even if the
+     * network request throws a TypeError (common with Google Apps
+     * Script 302-redirects in no-cors mode).
+     */
     form.hidden = true;
     surveyTitle.hidden = true;
-    introCopy.innerHTML = "多謝你參與是次網絡培訓工作坊！<br>你嘅寶貴意見將會作為日後舉辦課程嘅重要參考。";
+    introCopy.innerHTML =
+      "多謝你參與是次網絡培訓工作坊！<br>" +
+      "你嘅寶貴意見將會作為日後舉辦課程嘅重要參考。";
     thankYou.hidden = false;
     thankYou.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Fire the POST in the background — don't await (opaque response)
+    submitSurvey(data).catch((err) =>
+      console.error("Submit error (data may still have been sent):", err)
+    );
   } catch (error) {
     setStatus("暫時未能提交，請稍後再試或聯絡主辦方。", "error");
     console.error(error);
