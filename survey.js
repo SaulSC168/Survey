@@ -109,7 +109,7 @@ async function submitSurvey(data) {
     throw new Error("Google Apps Script URL is not configured.");
   }
 
-  const response = await fetch(GOOGLE_SCRIPT_URL, {
+  await fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -117,12 +117,6 @@ async function submitSurvey(data) {
     },
     body: JSON.stringify(data),
   });
-
-  const result = await response.json();
-
-  if (!response.ok || !result.ok) {
-    throw new Error(result.error || "Submission failed.");
-  }
 
   return { ok: true };
 }
